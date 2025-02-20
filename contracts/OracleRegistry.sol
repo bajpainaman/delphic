@@ -4,38 +4,44 @@ pragma solidity ^0.8.24;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "./interfaces/IOracleRegistry.sol";
 
-contract OracleRegistry is Ownable, Pausable, ReentrancyGuard {
-    // Struct to store Oracle Provider information
-    struct OracleProvider {
-        address providerAddress;
-        string name;
-        string dataFormat;
-        uint256 updateFrequency;
-        bool isActive;
-        uint256 reputation;
-        uint256 registrationTime;
-    }
-
+contract OracleRegistry is IOracleRegistry, Ownable, Pausable, ReentrancyGuard {
     // Mapping from provider address to their information
-    mapping(address => OracleProvider) public providers;
+    mapping(address => OracleProvider) private providers;
 
     // Array to keep track of all provider addresses
-    address[] public providerAddresses;
+    address[] private providerAddresses;
 
     // Events
-    event ProviderRegistered(address indexed provider, string name, string dataFormat, uint256 updateFrequency);
+    event ProviderRegistered(
+        address indexed provider,
+        string name,
+        string dataFormat,
+        uint256 updateFrequency
+    );
     event ProviderDeactivated(address indexed provider);
     event ProviderReactivated(address indexed provider);
     event DataSubmitted(address indexed provider, bytes32 dataHash);
+    event TeeKeyRotated(address indexed provider, bytes newPublicKey);
 
     constructor() {}
+
+    function getProvider(address _provider) 
+        external 
+        view 
+        override 
+        returns (OracleProvider memory) 
+    {
+        return providers[_provider];
+    }
 
     function registerProvider(
         string memory _name,
         string memory _dataFormat,
-        uint256 _updateFrequency
-    ) external whenNotPaused {
+        uint256 _updateFrequency,
+        bytes memory _teePublicKey
+    ) external override whenNotPaused {
         require(providers[msg.sender].providerAddress == address(0), "Provider already registered");
         
         providers[msg.sender] = OracleProvider({
@@ -45,7 +51,9 @@ contract OracleRegistry is Ownable, Pausable, ReentrancyGuard {
             updateFrequency: _updateFrequency,
             isActive: true,
             reputation: 0,
-            registrationTime: block.timestamp
+            registrationTime: block.timestamp,
+            teePublicKey: _teePublicKey,
+            lastKeyRotation: block.timestamp
         });
 
         providerAddresses.push(msg.sender);
@@ -56,23 +64,6 @@ contract OracleRegistry is Ownable, Pausable, ReentrancyGuard {
     function submitDataHash(bytes32 dataHash) external whenNotPaused {
         require(providers[msg.sender].isActive, "Provider not active");
         emit DataSubmitted(msg.sender, dataHash);
-    }
-
-    function getProvider(address _provider) external view returns (
-        string memory name,
-        string memory dataFormat,
-        uint256 updateFrequency,
-        bool isActive,
-        uint256 reputation
-    ) {
-        OracleProvider memory provider = providers[_provider];
-        return (
-            provider.name,
-            provider.dataFormat,
-            provider.updateFrequency,
-            provider.isActive,
-            provider.reputation
-        );
     }
 
     function deactivateProvider(address _provider) external onlyOwner {
@@ -87,11 +78,34 @@ contract OracleRegistry is Ownable, Pausable, ReentrancyGuard {
         emit ProviderReactivated(_provider);
     }
 
+    function rotateTeeKey(bytes memory _newPublicKey) 
+        external 
+        override 
+        whenNotPaused 
+    {
+        require(providers[msg.sender].isActive, "Provider not active");
+        
+        providers[msg.sender].teePublicKey = _newPublicKey;
+        providers[msg.sender].lastKeyRotation = block.timestamp;
+        
+        emit TeeKeyRotated(msg.sender, _newPublicKey);
+    }
+
     function pause() external onlyOwner {
         _pause();
     }
 
     function unpause() external onlyOwner {
         _unpause();
+    }
+
+    // Additional helper functions
+    function getProviderCount() external view returns (uint256) {
+        return providerAddresses.length;
+    }
+
+    function getProviderAtIndex(uint256 _index) external view returns (address) {
+        require(_index < providerAddresses.length, "Index out of bounds");
+        return providerAddresses[_index];
     }
 }

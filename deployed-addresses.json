@@ -1,0 +1,9 @@
+{
+  "OracleRegistry": "0xF6bceea4aCbcf61a2190959FCC99680304c66073",
+  "PaymentHandler": "0xdC123356a6F8aab03FF4CD6ac601C324999dAFc3",
+  "DataVerification": "0xc69903fB5F68466334F9C587660cC849216a32Eb",
+  "RequestRegistry": "0xd94A42f0c077b682a6CE4C4eE83ae0267bEd7fd4",
+  "ConsumerInterface": "0x87f2dCDc925daCCE280ec0CcE6B55Ab4A958C3dC",
+  "network": "sepolia",
+  "chainId": 11155111
+}
