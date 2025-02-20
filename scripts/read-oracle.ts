@@ -9,7 +9,7 @@ async function main() {
         console.log("Using account:", await signer.getAddress());
 
         // Contract address from your deployment
-        const CONTRACT_ADDRESS = "0x64feD8fBfd3a2F1adb7D802DbB09D9CE7acf8599";
+        const CONTRACT_ADDRESS = "0xF6bceea4aCbcf61a2190959FCC99680304c66073"
         
         const OracleRegistry = await ethers.getContractFactory("OracleRegistry");
         const registry = OracleRegistry.attach(CONTRACT_ADDRESS).connect(signer) as Contract;
