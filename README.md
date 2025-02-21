@@ -6,7 +6,7 @@
 
 ## What is Delphic?
 
-Delphic Protocol is a revolutionary oracle solution that allows anyone to bring **any API data on-chain** through a secure, verifiable, and customizable oracle network built on Avalanche.
+Delphic Protocol is a revolutionary oracle solution that allows anyone to bring **any API data on-chain** through a secure, verifiable, and customizable oracle network.
 
 Unlike traditional oracle networks that limit users to pre-selected data streams, Delphic empowers developers and businesses to use their existing APIs directly with blockchain applications, creating a true bridge between Web2 and Web3.
 
@@ -23,14 +23,13 @@ This creates a massive barrier preventing Web2 companies from entering the block
 
 Delphic Protocol makes blockchain technology accessible to all businesses by allowing them to seamlessly connect their existing APIs to the decentralized world. We're building the missing infrastructure layer that will accelerate mainstream blockchain adoption.
 
-## Why Avalanche?
+## Why Delphic?
 
-We've chosen to build Delphic on Avalanche (AVAX) for several key reasons:
-- **Speed & Scalability**: AVAX's high throughput enables real-time data feeds
-- **EVM Compatibility**: Seamless integration with existing Ethereum smart contracts
-- **Low Fees**: Cost-effective oracle operations for frequent updates
-- **Subnets**: Potential for custom oracle subnets with specific security properties
-- **Growing Ecosystem**: Strategic positioning in one of blockchain's fastest-growing ecosystems
+- **Universal API Support**: Connect any API endpoint to any blockchain
+- **Secure Key Management**: Your API keys remain protected through advanced TEE technology
+- **Customizable Data Feeds**: Set your own update frequency and parameters
+- **Verifiable Execution**: Cryptographic proofs ensure transparency and correctness
+- **Cost-Effective**: Pay only for the data you need, when you need it
 
 ## How Delphic Works
 
@@ -46,13 +45,13 @@ We've chosen to build Delphic on Avalanche (AVAX) for several key reasons:
 - **API Key Protection**: Secure key management through TEE technology
 - **Flexible Update Frequency**: From one-time calls to regular updates
 - **Verifiable Responses**: Cryptographic proofs ensure data integrity
-- **Stake-Based Security**: Oracles stake AVAX tokens, creating economic security
+- **Stake-Based Security**: Oracles stake native tokens, creating economic security
 - **Dispute Resolution**: Built-in mechanisms to handle inaccurate data
 
 ## Development Roadmap
 
 ### Phase 1: Foundation (Q2 2024)
-- Core smart contract development on AVAX
+- Core smart contract development
 - Basic TEE implementation for API key security
 - Single-node proof of concept
 
@@ -63,13 +62,30 @@ We've chosen to build Delphic on Avalanche (AVAX) for several key reasons:
 
 ### Phase 3: Scaling (Q4 2024)
 - Advanced security features (ORAM, constant-time execution)
-- Custom AVAX subnet exploration
+- Cross-chain deployment
 - Enterprise partnership program
 
 ### Phase 4: Ecosystem Expansion (2025)
 - Developer tools and SDK
-- Integration with major AVAX DeFi protocols
-- Cross-chain functionality
+- Integration with major DeFi protocols
+- Multi-chain interoperability
+
+## Use Cases
+
+### DeFi
+- Custom price feeds from any source
+- Risk assessment API integration
+- Credit scoring for undercollateralized lending
+
+### Gaming
+- Real-time sports data for prediction markets
+- Weather APIs for gaming mechanics
+- Social media integration for community-driven games
+
+### Enterprise
+- Supply chain verification through existing ERP APIs
+- IoT sensor data verification
+- Regulatory compliance automation
 
 ## Join the Revolution
 
@@ -85,8 +101,8 @@ Bring your existing APIs on-chain without rebuilding your entire infrastructure.
 Earn rewards by contributing to the security and reliability of the Delphic network.
 
 ## Connect With Us
--email : eib26@drexel.edu , nb3283@drexel.edu 
 
+- Email : eib26@drexel.edu , nb3283@drexel.edu 
 ---
 
-Built with ❤️ on Avalanche
+Delphic Protocol: Bridging Worlds. Securing Data.
