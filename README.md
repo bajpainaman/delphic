@@ -49,6 +49,33 @@ Delphic Protocol makes blockchain technology accessible to all businesses by all
 - **Stake-Based Security**: Oracles stake native tokens, creating economic security
 - **Dispute Resolution**: Built-in mechanisms to handle inaccurate data
 
+## Key Diffrentiators 
+| Feature | Delphic Network | Streamr | Chainlink | API3 |
+|---------|----------------|---------|-----------|------|
+| **Supports encrypted API keys** | ✅ Yes (TEE) | ❌ No | ❌ No | ✅ Yes (first-party oracles) |
+| **Easy custom API requests** | ✅ Yes | ❌ No (only predefined data streams) | ⚠️ Yes, but requires a node operator | ⚠️ Yes, but requires governance approval |
+| **Decentralized oracle nodes** | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
+| **TEE for verification** | ✅ Yes | ❌ No | ❌ No | ❌ No |
+| **Off-chain data storage (IPFS/Arweave)** | ✅ Yes | ✅ Yes | ❌ No | ❌ No |
+| **Supports multiple concurrent requests** | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
+| **Staking/slashing mechanism for security** | ✅ Yes | ❌ No | ✅ Yes | ✅ Yes |
+| **Low gas fees (Layer 2 support)** | ✅ Yes (Base L2) | ❌ No (runs off-chain) | ❌ No (expensive due to Ethereum L1) | ✅ Yes (Arbitrum/Polygon) |
+| **Cheaper for high-frequency data requests** | ✅ Yes | ✅ Yes | ❌ No | ✅ Yes |
+
+
+## Workflow 
+| Step | Description | Time Estimate | Cost Estimate |
+|------|------------|--------------|--------------|
+| **User inputs API key & info** | User enters API URL, encrypted API key, parameters, and frequency. | ~10 sec | No on-chain cost (encryption off-chain) |
+| **Smart contract registers request** | Request ID stored on-chain, payment held for oracle. | ~5 sec | Gas fee (~$0.10 - $0.30) |
+| **Oracle picks up request & fetches data** | Oracle decrypts API key (TEE), fetches API data. | ~1-3 sec | API request cost + minor node processing fee (~$0.001 - $0.01 per request) |
+| **Oracle submits response on-chain** | Oracle hashes response, stores JSON off-chain (IPFS/Arweave), submits hash & proof on-chain. | ~5 sec | Gas fee (~$0.20 - $0.50, depends on hash size & Base congestion) |
+| **Smart contract verifies & stores data** | Smart contract checks oracle’s submission, updates mapping, releases payment. | ~5 sec | Gas fee (~$0.10 - $0.30) |
+| **User retrieves data** | Smart contract call returns hash + off-chain storage link. | Instant | Gas fee (~$0.05 - $0.10 per read call) |
+
+
+
+
 ## Development Roadmap
 
 ### Phase 1: Foundation (Q2 2024)
