@@ -1,0 +1,38 @@
+.App {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  h1 {
+    color: #333;
+    margin-bottom: 2rem;
+  }
+  
+  .content-container {
+    display: flex;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  .form-section {
+    flex: 1;
+  }
+  
+  .wallet-section {
+    flex: 0 0 auto;
+  }
+  
+  @media (max-width: 768px) {
+    .content-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .wallet-section {
+      width: 100%;
+      max-width: 500px;
+    }
+  }
