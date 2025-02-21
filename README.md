@@ -2,7 +2,7 @@
 
 ## The Oracle Solution That Bridges Web2 and Web3
 
-![Delphic Protocol Logo](https://placeholder.com/logo)
+![Delphic Protocol Logo](https://raw.githubusercontent.com/bajpainaman/delphic/refs/heads/main/DALL%C2%B7E%202025-02-21%2009.23.02%20-%20A%20minimalist%2C%20modern%20logo%20for%20'Delphic%20Protocol'%2C%20an%20oracle%20service%20connecting%20traditional%20APIs%20to%20blockchain%20networks.%20The%20design%20features___-%20A%20simp.webp)
 
 ## What is Delphic?
 
